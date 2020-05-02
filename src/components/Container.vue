@@ -259,6 +259,10 @@ import request from "../util/request.js";
 import generateCode from "./generateCode.js";
 import TestRun from "./TestRun";
 
+import "brace/index";
+import "brace/mode/json";
+import "brace/mode/html";
+
 export default {
   name: "fm-making-form",
   components: {

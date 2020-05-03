@@ -1,9 +1,15 @@
-const TerserPlugin = require('terser-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   productionSourceMap: false,
+  // 输出文件目录
+  outputDir: 'docs',
+  // 基本路径
   publicPath: './',
-  configureWebpack: config => {
+  // eslint-loader 是否在保存的时候检查
+  lintOnSave: true,
+
+  configureWebpack: (config) => {
     let plugins = [
       new TerserPlugin({
         terserOptions: {
@@ -15,10 +21,10 @@ module.exports = {
         },
         sourceMap: false,
         parallel: true,
-      })
-    ]
+      }),
+    ];
     if (process.env.NODE_ENV !== 'development') {
-      config.plugins = [...config.plugins, ...plugins]
+      config.plugins = [...config.plugins, ...plugins];
     }
-  }
-}
+  },
+};

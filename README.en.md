@@ -6,6 +6,8 @@
 
 The FormBuilder developed base on [vue](https://github.com/vuejs/vue) and [element-ui](https://github.com/ElemeFE/element), equipts with the latest front-end technology stack, built-in i18n internationalization solution, all of those are aimed at making developmemt simpler, and more efficiently.
 
+Online: [FormBuilder](https://giscafer.github.io/vue-form-builder)
+
 ## Feature
 
 - [x] Visual configuration page

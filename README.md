@@ -8,6 +8,8 @@
 
 本项目在 [vue-form-making](https://github.com/GavinZhuLei/vue-form-making) 基础上二次开发，目的是生成表单的 Element UI 原始代码，然后将生成的源码放在项目中使用，代替手写表单的工作。
 
+在线访问：[表单源码生成平台](https://giscafer.github.io/vue-form-builder)
+
 ## 特性
 
 - [x] 可视化配置页面

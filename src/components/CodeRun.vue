@@ -11,20 +11,16 @@ export default {
       code: `<template>
 <div>
   <h1>{{ title }}</h1>
-  <div><el-button type="primary" @click="handleClick">点一下, 玩一年</el-button></div>
 </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      title: "宝刀屠龙"
+      title: "FormBuilder"
     }
   },
   methods: {
-    handleClick() {
-      this.$message.success('装备不花一分钱')
-    }
   }
 };
 <\/script>

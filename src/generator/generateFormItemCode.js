@@ -78,8 +78,7 @@ function genWidgetTemp(widget) {
             label="${item.value}"
             key="${item.value}">
             ${remote ? item.label : showLabel ? item.label : item.value}
-          </el-radio>
-          `;
+          </el-radio>`;
       }
       return optStr;
     };

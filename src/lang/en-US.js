@@ -23,7 +23,7 @@ export default {
         table: 'Sub-table',
         grid: 'Grid',
         tabs: 'Tabs',
-        divider: 'Divider'
+        divider: 'Divider',
       },
       basic: {
         title: 'Basic Component',
@@ -33,17 +33,20 @@ export default {
       },
       layout: {
         title: 'Layout',
-      }
+      },
     },
     description: {
-      containerEmpty: 'You can drag and drop the item from the left to add components',
+      containerEmpty:
+        'You can drag and drop the item from the left to add components',
       configEmpty: 'Please add a component',
-      tableEmpty: 'You can drag and drop the item from the left to add components',
-      uploadJsonInfo: 'There is the format of JSON below，you can overwrite it with you own JSON code'
+      tableEmpty:
+        'You can drag and drop the item from the left to add components',
+      uploadJsonInfo:
+        'There is the format of JSON below，you can overwrite it with you own JSON code',
     },
     message: {
       copySuccess: 'Copy Successed',
-      validError: 'Form data validation failed'
+      validError: 'Form data validation failed',
     },
     actions: {
       import: 'Import JSON',
@@ -60,7 +63,8 @@ export default {
       addColumn: 'Add Column',
       addTab: 'Add Tab',
       upload: 'Upload',
-      add: 'Add'
+      add: 'Add',
+      copyCode: 'Copy Code',
     },
     config: {
       form: {
@@ -69,11 +73,11 @@ export default {
           title: 'Label Position',
           left: 'Left',
           right: 'Right',
-          top: 'Top'
+          top: 'Top',
         },
         labelWidth: 'Label Width',
         size: 'Size',
-        customClass: 'Custom Class'
+        customClass: 'Custom Class',
       },
       widget: {
         title: 'Component Attribute',
@@ -175,13 +179,13 @@ export default {
         tab: 'Tab',
         validatorRequired: 'Required',
         validatorType: 'Invaild format',
-        validatorPattern: 'Unmatched pattern'
-      }
+        validatorPattern: 'Unmatched pattern',
+      },
     },
     upload: {
       preview: 'preview',
       edit: 'replace',
-      delete: 'delete'
-    }
-  }
-}
+      delete: 'delete',
+    },
+  },
+};

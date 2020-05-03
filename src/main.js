@@ -16,7 +16,7 @@ Vue.use(VueEditor);
 
 Vue.use(VueRunSfc, {
   cssLabs: [
-    'https://unpkg.com/normalize.css@8.0.1/normalize.css',
+    'https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css',
     'https://cdn.jsdelivr.net/npm/element-ui@2.9.1/lib/theme-chalk/index.css',
   ],
   jsLabs: ['https://cdn.jsdelivr.net/npm/element-ui@2.9.1/lib/index.js'],

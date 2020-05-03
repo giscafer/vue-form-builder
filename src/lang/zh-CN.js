@@ -23,7 +23,7 @@ export default {
         table: '子表单',
         grid: '栅格布局',
         tabs: '标签页',
-        divider: '分割线'
+        divider: '分割线',
       },
       basic: {
         title: '基础字段',
@@ -33,17 +33,18 @@ export default {
       },
       layout: {
         title: '布局字段',
-      }
+      },
     },
     description: {
       containerEmpty: '从左侧拖拽来添加字段',
       configEmpty: '请添加字段',
       tableEmpty: '从左侧拖拽来添加字段',
-      uploadJsonInfo: 'JSON格式如下，直接复制生成的json覆盖此处代码点击确定即可'
+      uploadJsonInfo:
+        'JSON格式如下，直接复制生成的json覆盖此处代码点击确定即可',
     },
     message: {
       copySuccess: '复制成功',
-      validError: '表单数据校验失败'
+      validError: '表单数据校验失败',
     },
     actions: {
       import: '导入JSON',
@@ -60,7 +61,8 @@ export default {
       addColumn: '添加列',
       addTab: '添加标签',
       upload: '点击上传',
-      add: '添加'
+      add: '添加',
+      copyCode: '复制代码',
     },
     config: {
       form: {
@@ -69,11 +71,11 @@ export default {
           title: '标签对齐方式',
           left: '左对齐',
           right: '右对齐',
-          top: '顶部对齐'
+          top: '顶部对齐',
         },
         labelWidth: '表单标签宽度',
         size: '组件尺寸',
-        customClass: '自定义Class'
+        customClass: '自定义Class',
       },
       widget: {
         title: '字段属性',
@@ -175,13 +177,13 @@ export default {
         tab: '标签页',
         validatorRequired: '必须填写',
         validatorType: '格式不正确',
-        validatorPattern: '格式不匹配'
-      }
+        validatorPattern: '格式不匹配',
+      },
     },
     upload: {
       preview: '预览',
       edit: '替换',
-      delete: '删除'
-    }
-  }
-}
+      delete: '删除',
+    },
+  },
+};

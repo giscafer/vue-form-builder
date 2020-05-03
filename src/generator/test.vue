@@ -9,14 +9,12 @@
       label-position="right"
       label-width="100px "
     >
-      <el-form-item label="单行文本" prop="input_1588479171000_92966">
-        <el-input
-          type="text"
-          v-model="dataModel.input_1588479171000_92966"
-          placeholder="请输入"
-          :style="{width:'100%'}"
-          :disabled="false"
-        ></el-input>
+      <el-form-item label="单选框组" prop="radio_27c2dce87">
+        <el-radio-group v-model="dataModel.radio_27c2dce87" :style="{width:''}" :disabled="false">
+          <el-radio :style="{display:'block' }" label="Option 1" key="Option 1">Option 1</el-radio>
+          <el-radio :style="{display:'block' }" label="Option 2" key="Option 2">Option 2</el-radio>
+          <el-radio :style="{display:'block' }" label="Option 3" key="Option 3">Option 3</el-radio>
+        </el-radio-group>
       </el-form-item>
     </el-form>
   </div>
@@ -26,13 +24,9 @@ export default {
   name: "form-builder",
   data() {
     return {
-      models: { input_1588479171000_92966: "" },
-      rules: {
-        input_1588479171000_92966: [
-          { type: "string", message: "单行文本格式不正确" }
-        ]
-      },
-      dataModel: { input_1588479171000_92966: "" }
+      models: { radio_27c2dce87: "" },
+      rules: { radio_27c2dce87: [] },
+      dataModel: { radio_27c2dce87: "" }
     };
   },
   created() {

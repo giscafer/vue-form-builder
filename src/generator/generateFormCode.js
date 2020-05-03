@@ -7,7 +7,7 @@
 import { DATA_MODEL } from './constant';
 import { genFormItemTemp } from './generateFormItemCode';
 
-export default function genFormCode(data, value, remote) {
+export default function genFormCode(data, value) {
   const { models, rules, dataModel } = generateModel(
     data.list,
     value,

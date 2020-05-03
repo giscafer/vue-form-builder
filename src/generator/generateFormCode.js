@@ -7,13 +7,18 @@
 import { DATA_MODEL } from './constant';
 import { genFormItemTemp } from './generateFormItemCode';
 
+let models;
+let rules;
+let dataModel;
+
 export default function genFormCode(data, value) {
-  const { models, rules, dataModel } = generateModel(
-    data.list,
-    value,
-    models,
-    rules
-  );
+  models = {};
+  rules = {};
+  dataModel = {};
+  const res = generateModel(data.list, value, models, rules);
+  Object.assign(models, res.models);
+  Object.assign(rules, res.rules);
+  Object.assign(dataModel, res.dataModel);
 
   let templateCode = `<template>
     <div>
@@ -28,7 +33,28 @@ export default function genFormCode(data, value) {
       >`;
 
   for (let widget of data.list) {
-    templateCode += genFormItemTemp(widget);
+    if (widget.type === 'grid') {
+      const item = widget;
+      templateCode += `<el-row
+      key="${item.key}"
+      type="flex"
+      :gutter="${item.options.gutter ? item.options.gutter : 0}"
+      justify="${item.options.justify}"
+      align="${item.options.align}"
+    >`;
+      item.columns.forEach((col, colIndex) => {
+        templateCode += ` <el-col key="${colIndex}" :span="${col.span}">
+        ${col.list.reduce(
+          (template, citem) => template + genFormItemTemp(citem),
+          ''
+        )}
+    </el-col>`;
+      });
+
+      templateCode += `</el-row>`;
+    } else {
+      templateCode += genFormItemTemp(widget);
+    }
   }
 
   templateCode += `</el-form>
@@ -58,9 +84,6 @@ export default function genFormCode(data, value) {
 }
 
 function generateModel(genList, value) {
-  let models = {};
-  let rules = {};
-  let dataModel = {};
   for (let i = 0; i < genList.length; i++) {
     if (genList[i].type === 'grid') {
       genList[i].columns.forEach((item) => {

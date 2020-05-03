@@ -16,12 +16,12 @@
     "type": "git",
     "url": "https://github.com/giscafer/vue-form-builder"
   },
-  "main": "dist/FormMaking.common.js",
+  "main": "dist/FormBuilder.common.js",
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "build-bundle": "vue-cli-service build --target lib --name FormMaking ./src/index.js"
+    "build-bundle": "vue-cli-service build --target lib --name FormBuilder ./src/index.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -35,7 +35,7 @@
     "vue": "^2.6.5",
     "vue-i18n": "5.0.3",
     "vue-router": "^3.0.1",
-    "vue-run-sfc": "^1.4.0",
+    "vue-run-sfc": "^1.1.7",
     "vue2-editor": "^2.10.2",
     "vuedraggable": "^2.16.0"
   },

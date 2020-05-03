@@ -15,27 +15,31 @@ Vue.use(VueI18n);
 Vue.use(VueEditor);
 
 Vue.use(VueRunSfc, {
-  cssLabs: 'https://unpkg.com/normalize.css@8.0.1/normalize.css',
-  row: false,
+  cssLabs: [
+    'https://unpkg.com/normalize.css@8.0.1/normalize.css',
+    'https://cdn.jsdelivr.net/npm/element-ui@2.9.1/lib/theme-chalk/index.css',
+  ],
+  jsLabs: ['https://cdn.jsdelivr.net/npm/element-ui@2.9.1/lib/index.js'],
+  row: true,
   reverse: true,
+  height: '400px',
+  open: true,
   isHideHeader: false,
 });
+
+import './components';
 
 const messages = {
   'en-US': {
     header: {
-      title: 'FormMaking',
+      title: 'FormBuilder',
       document: 'Docs',
-      pricing: 'Pricing',
-      advanced: 'Advanced',
     },
   },
   'zh-CN': {
     header: {
-      title: '表单设计器',
+      title: '表单源码生成平台',
       document: '使用文档',
-      pricing: '商业授权',
-      advanced: '高级版本',
     },
   },
 };
@@ -46,10 +50,8 @@ Vue.config.lang = 'zh-CN';
 
 Vue.use(ElementUI, { size: 'small' });
 
-// import 'form-builder/dist/FormMaking.css'
-// import FormMaking from 'form-builder'
-import FormMaking from './index';
-Vue.use(FormMaking);
+import FormBuilder from './index';
+Vue.use(FormBuilder);
 
 Vue.config.productionTip = false;
 

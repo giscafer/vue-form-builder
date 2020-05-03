@@ -1,18 +1,13 @@
 <template>
-  <vue-run-sfc :js-labs="jsLabs" :css-labs="cssLabs" title="测试DEMO" :open="false" :code="code"></vue-run-sfc>
+  <vue-run-sfc title="测试DEMO" :open="false" :code="code"></vue-run-sfc>
 </template>
 
 <script>
 import genFormCode from "./generateFormCode";
 export default {
-  name: "test-run",
   props: ["data", "remote", "value", "insite"],
   data() {
     return {
-      jsLabs: ["https://cdn.jsdelivr.net/npm/element-ui@2.12.0/lib/index.js"],
-      cssLabs: [
-        "https://cdn.jsdelivr.net/npm/element-ui@2.12.0/lib/theme-chalk/index.css"
-      ],
       code: `<template>
 <div>
   <h1>{{ title }}</h1>
@@ -44,7 +39,7 @@ export default {
   },
   created() {
     const code = genFormCode(this.data, this.value);
-    // this.code = code;
+    this.code = encodeURIComponent(code);
   }
 };
 </script>

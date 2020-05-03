@@ -153,13 +153,13 @@
           :visible="previewVisible"
           @on-close="previewVisible = false"
           ref="widgetPreview"
-          width="1000px"
+          width="1400px"
           form
         >
           <!-- 运行源码 test -->
           <test-run :data="widgetForm" :value="widgetModels" :remote="remoteFuncs"></test-run>
           <!-- 替换generate-form的实现为动态生成源码的方式 -->
-          <generate-form
+          <!--  <generate-form
             insite="true"
             @on-change="handleDataChange"
             v-if="previewVisible"
@@ -173,7 +173,7 @@
               <el-input v-model="scope.model.blank.width" style="width: 100px"></el-input>Height
               <el-input v-model="scope.model.blank.height" style="width: 100px"></el-input>
             </template>
-          </generate-form>
+          </generate-form>-->
 
           <template slot="action">
             <el-button type="primary" @click="handleTest">{{$t('fm.actions.getData')}}</el-button>
@@ -257,7 +257,6 @@ import {
 import { loadJs, loadCss } from "../util/index.js";
 import request from "../util/request.js";
 import generateCode from "./generateCode.js";
-import TestRun from "./TestRun";
 
 import "brace/index";
 import "brace/mode/json";
@@ -271,8 +270,7 @@ export default {
     FormConfig,
     WidgetForm,
     CusDialog,
-    GenerateForm,
-    TestRun
+    GenerateForm
   },
   props: {
     preview: {

@@ -4,9 +4,9 @@
 
 ## 简介
 
-基于 [vue](https://github.com/vuejs/vue) 和 [element-ui](https://github.com/ElemeFE/element) 实现的表单设计器，使用了最新的前端技术栈，内置了 i18n 国际化解决方案，可以让表单开发简单而高效。
+一个通过拖拽生成表单页面的平台，基于 Vue.js 和 Element UI 开发，并生成表单源代码（WYSIWYG），可以让表单开发简单而高效。
 
-本项目在 [vue-form-making](https://github.com/GavinZhuLei/vue-form-making) 基础上二次开发，目的为了获得到表单的 Element UI 原始代码，方便在项目开发时使用，代替手写表单的工作。
+本项目在 [vue-form-making](https://github.com/GavinZhuLei/vue-form-making) 基础上二次开发，目的是生成表单的 Element UI 原始代码，然后将生成的源码放在项目中使用，代替手写表单的工作。
 
 ## 特性
 
@@ -16,7 +16,7 @@
 - [x] 提供自定义组件满足用户自定义需求
 - [x] 提供功能强大的高级组件
 - [x] 国际化支持
-- [x] **生成 Element UI 表单源代码 （方便开发者创建表单，拷贝源码到项目中快速开发）**
+- [x] **生成 Element UI 表单源代码 （方便开发者拖拽生成表单，拷贝源码到项目中快速开发）**
 - [ ] 提供远端数据接口，方便用户需要异步获取数据加载
 - [ ] 支持表单验证
 - [ ] 快速获取表单数据

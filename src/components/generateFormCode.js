@@ -36,6 +36,7 @@ export default function genFormCode(data, value, remote) {
 
   const scriptCode = `<script>
     export default {
+      name:'form-builder',
         data() {
           return {
             models: ${JSON.stringify(models)},

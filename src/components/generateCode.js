@@ -114,7 +114,7 @@ export default function(data, type = 'vue') {
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    <link rel="stylesheet" href="https://unpkg.com/form-builder/dist/FormMaking.css">
+    <link rel="stylesheet" href="https://unpkg.com/form-builder/dist/FormBuilder.css">
   </head>
   <body>
     <div id="app">
@@ -125,7 +125,7 @@ export default function(data, type = 'vue') {
     </div>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-    <script src="https://unpkg.com/form-builder/dist/FormMaking.umd.js"></script>
+    <script src="https://unpkg.com/form-builder/dist/FormBuilder.umd.js"></script>
     <script>
       new Vue({
         el: '#app',

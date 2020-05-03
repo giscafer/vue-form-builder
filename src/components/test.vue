@@ -9,10 +9,10 @@
       label-position="right"
       label-width="100px "
     >
-      <el-form-item label="单行文本" prop="input_1588443578000_36965">
+      <el-form-item label="单行文本" prop="input_1588479171000_92966">
         <el-input
           type="text"
-          v-model="dataModel.input_1588443578000_36965"
+          v-model="dataModel.input_1588479171000_92966"
           placeholder="请输入"
           :style="{width:'100%'}"
           :disabled="false"
@@ -23,15 +23,16 @@
 </template>
 <script>
 export default {
+  name: "form-builder",
   data() {
     return {
-      models: { input_1588443578000_36965: "" },
+      models: { input_1588479171000_92966: "" },
       rules: {
-        input_1588443578000_36965: [
+        input_1588479171000_92966: [
           { type: "string", message: "单行文本格式不正确" }
         ]
       },
-      dataModel: { input_1588443578000_36965: "111" }
+      dataModel: { input_1588479171000_92966: "" }
     };
   },
   created() {

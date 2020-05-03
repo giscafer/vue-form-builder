@@ -199,6 +199,8 @@
 
 <script>
 import FmUpload from "./Upload";
+import { genUniqKey } from "../util/index";
+
 export default {
   props: ["element", "select", "index", "data"],
   components: {
@@ -233,7 +235,7 @@ export default {
       let cloneData = {
         ...this.data.list[index],
         options: { ...this.data.list[index].options },
-        key: Date.parse(new Date()) + "_" + Math.ceil(Math.random() * 99999)
+        key: genUniqKey()
       };
 
       if (

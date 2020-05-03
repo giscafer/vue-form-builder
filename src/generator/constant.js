@@ -1,1 +1,1 @@
-const DATA_MODEL = 'dataModel';
+export const DATA_MODEL = 'dataModel';

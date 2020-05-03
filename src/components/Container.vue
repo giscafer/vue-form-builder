@@ -157,7 +157,7 @@
           form
         >
           <!-- 运行源码 test -->
-          <test-run :data="widgetForm" :value="widgetModels" :remote="remoteFuncs"></test-run>
+          <code-run :data="widgetForm" :value="widgetModels" :remote="remoteFuncs"></code-run>
           <!-- 替换generate-form的实现为动态生成源码的方式 -->
           <!--  <generate-form
             insite="true"

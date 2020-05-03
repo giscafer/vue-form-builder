@@ -3,6 +3,6 @@
  */
 
 import Vue from 'vue';
-import TestRun from './TestRun';
+import CodeRun from './CodeRun';
 
-Vue.component('test-run', TestRun);
+Vue.component('code-run', CodeRun);

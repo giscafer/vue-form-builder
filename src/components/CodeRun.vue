@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import genFormCode from "./generateFormCode";
+import genFormCode from "../generator/generateFormCode";
 export default {
   props: ["data", "remote", "value", "insite"],
   data() {

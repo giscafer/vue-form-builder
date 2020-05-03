@@ -82,13 +82,7 @@
         <el-container class="center-container" direction="vertical">
           <el-header class="btn-bar" style="height: 45px;">
             <slot name="action"></slot>
-            <el-button
-              v-if="upload"
-              type="text"
-              size="medium"
-              icon="el-icon-upload2"
-              @click="handleUpload"
-            >{{$t('fm.actions.import')}}</el-button>
+
             <el-button
               v-if="clearable"
               type="text"
@@ -104,6 +98,12 @@
               @click="handlePreview"
             >{{$t('fm.actions.preview')}}</el-button>
             <el-button
+              type="text"
+              size="medium"
+              icon="el-icon-document"
+              @click="handleCopyCode(true)"
+            >{{$t('fm.actions.copyCode')}}</el-button>
+            <el-button
               v-if="generateJson"
               type="text"
               size="medium"
@@ -111,12 +111,12 @@
               @click="handleGenerateJson"
             >{{$t('fm.actions.json')}}</el-button>
             <el-button
-              v-if="generateCode"
+              v-if="upload"
               type="text"
               size="medium"
-              icon="el-icon-document"
-              @click="handleGenerateCode"
-            >{{$t('fm.actions.code')}}</el-button>
+              icon="el-icon-upload2"
+              @click="handleUpload"
+            >{{$t('fm.actions.import')}}</el-button>
           </el-header>
           <el-main :class="{'widget-empty': widgetForm.list.length == 0}">
             <widget-form
@@ -148,34 +148,18 @@
             </el-main>
           </el-container>
         </el-aside>
-        <!-- 改写preview弹窗为 vue-run-sfc 源码渲染的方式，然后查看生成代码其实就是 这里的vue源码-->
         <cus-dialog
           :visible="previewVisible"
           @on-close="previewVisible = false"
           ref="widgetPreview"
-          width="1400px"
+          width="100%"
+          :fullscreen="true"
           form
         >
-          <!-- 运行源码 test -->
-          <code-run :data="widgetForm" :value="widgetModels" :remote="remoteFuncs"></code-run>
-          <!-- 替换generate-form的实现为动态生成源码的方式 -->
-          <!--  <generate-form
-            insite="true"
-            @on-change="handleDataChange"
-            v-if="previewVisible"
-            :data="widgetForm"
-            :value="widgetModels"
-            :remote="remoteFuncs"
-            ref="generateForm"
-          >
-            <template v-slot:blank="scope">
-              Width
-              <el-input v-model="scope.model.blank.width" style="width: 100px"></el-input>Height
-              <el-input v-model="scope.model.blank.height" style="width: 100px"></el-input>
-            </template>
-          </generate-form>-->
-
+          <!-- 运行源码 -->
+          <code-run ref="codeRunRef" :data="widgetForm" :value="widgetModels" :remote="remoteFuncs"></code-run>
           <template slot="action">
+            <el-button type="info" @click="handleCopyCode">{{$t('fm.actions.copyCode')}}</el-button>
             <el-button type="primary" @click="handleTest">{{$t('fm.actions.getData')}}</el-button>
             <el-button @click="handleReset">{{$t('fm.actions.reset')}}</el-button>
           </template>
@@ -206,7 +190,7 @@
             <el-button
               type="primary"
               class="json-btn"
-              :data-clipboard-text="jsonCopyValue"
+              @click="copyJsonDataHandler"
             >{{$t('fm.actions.copyData')}}</el-button>
           </template>
         </cus-dialog>
@@ -248,7 +232,6 @@ import FormConfig from "./FormConfig";
 import WidgetForm from "./WidgetForm";
 import CusDialog from "./CusDialog";
 import GenerateForm from "./GenerateForm";
-import Clipboard from "clipboard";
 import {
   basicComponents,
   layoutComponents,
@@ -256,7 +239,8 @@ import {
 } from "./componentsConfig.js";
 import { loadJs, loadCss } from "../util/index.js";
 import request from "../util/request.js";
-import generateCode from "./generateCode.js";
+import genFormCode from "../generator/generateFormCode";
+import copyText from "../util/copy";
 
 import "brace/index";
 import "brace/mode/json";
@@ -274,10 +258,6 @@ export default {
   },
   props: {
     preview: {
-      type: Boolean,
-      default: false
-    },
-    generateCode: {
       type: Boolean,
       default: false
     },
@@ -447,26 +427,14 @@ export default {
         const editor = ace.edit("jsoneditor");
         editor.session.setMode("ace/mode/json");
 
-        if (!this.jsonClipboard) {
-          this.jsonClipboard = new Clipboard(".json-btn");
-          this.jsonClipboard.on("success", e => {
-            this.$message.success(this.$t("fm.message.copySuccess"));
-          });
-        }
         this.jsonCopyValue = JSON.stringify(this.widgetForm);
       });
     },
-    handleGenerateCode() {
-      this.codeVisible = true;
-      this.htmlTemplate = generateCode(JSON.stringify(this.widgetForm), "html");
-      this.vueTemplate = generateCode(JSON.stringify(this.widgetForm), "vue");
-      this.$nextTick(() => {
-        const editor = ace.edit("codeeditor");
-        editor.session.setMode("ace/mode/html");
-
-        const vueeditor = ace.edit("vuecodeeditor");
-        vueeditor.session.setMode("ace/mode/html");
-      });
+    copyJsonDataHandler() {
+      const cpSuccess = copyText(this.jsonCopyValue);
+      if (cpSuccess) {
+        this.$message.success(this.$t("fm.message.copySuccess"));
+      }
     },
     handleUpload() {
       this.uploadVisible = true;
@@ -500,9 +468,6 @@ export default {
     getJSON() {
       return this.widgetForm;
     },
-    getHtml() {
-      return generateCode(JSON.stringify(this.widgetForm));
-    },
     setJSON(json) {
       this.widgetForm = json;
 
@@ -516,6 +481,20 @@ export default {
     },
     handleDataChange(field, value, data) {
       console.log(field, value, data);
+    },
+    handleCopyCode(flag) {
+      let code = "";
+      if (flag) {
+        // 未预览时直接生成表单代码后复制
+        code = genFormCode(this.widgetForm, this.widgetModels);
+      } else {
+        // 预览时复制已生成过的代码
+        code = decodeURIComponent(this.$refs.codeRunRef.code);
+      }
+      const cpSuccess = copyText(code);
+      if (cpSuccess) {
+        this.$message.success(this.$t("fm.message.copySuccess"));
+      }
     }
   },
   watch: {

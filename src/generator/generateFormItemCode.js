@@ -233,6 +233,31 @@ function genWidgetTemp(widget) {
   ></el-cascader>`;
   } else if (widget.type === 'text') {
     widgetTemp += `<span>{{${model}}}</span>`;
+  } else if (widget.type === 'table') {
+    // TODO: 远端数据
+    const columnFunc = () => {
+      let columnStr = '';
+      for (const item of widget.options.columns) {
+        columnStr += `
+        <el-table-column
+            prop="${item.field}"
+            label="${item.label}"
+            ${item.width ? ':style="{width:\'' + item.width + '\'}"' : ''}>
+          </el-table-column>
+          `;
+      }
+      return columnStr;
+    };
+    widgetTemp += ` <el-table
+    :data="${model}"
+    ${widget.options.height && 'height="' + widget.options.height + '"'}
+    :border="${widget.options.border}"
+    :stripe="${widget.options.stripe}"
+    ${
+      widget.options.width
+        ? ':style="{width:\'' + widget.options.width + '\'}"'
+        : ''
+    }>${columnFunc()}</el-table>`;
   }
   return widgetTemp;
 }

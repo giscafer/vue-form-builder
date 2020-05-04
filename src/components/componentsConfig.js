@@ -10,7 +10,7 @@ export const basicComponents = [
       pattern: '',
       placeholder: '',
       disabled: false,
-    }
+    },
   },
   {
     type: 'textarea',
@@ -21,8 +21,8 @@ export const basicComponents = [
       required: false,
       disabled: false,
       pattern: '',
-      placeholder: ''
-    }
+      placeholder: '',
+    },
   },
   {
     type: 'number',
@@ -35,8 +35,8 @@ export const basicComponents = [
       max: '',
       step: 1,
       disabled: false,
-      controlsPosition: ''
-    }
+      controlsPosition: '',
+    },
   },
   {
     type: 'radio',
@@ -48,16 +48,16 @@ export const basicComponents = [
       options: [
         {
           value: 'Option 1',
-          label: 'Option 1'
+          label: 'Option 1',
         },
         {
           value: 'Option 2',
-          label: 'Option 2'
+          label: 'Option 2',
         },
         {
           value: 'Option 3',
-          label: 'Option 3'
-        }
+          label: 'Option 3',
+        },
       ],
       required: false,
       width: '',
@@ -65,11 +65,11 @@ export const basicComponents = [
       remoteOptions: [],
       props: {
         value: 'value',
-        label: 'label'
+        label: 'label',
       },
       remoteFunc: '',
       disabled: false,
-    }
+    },
   },
   {
     type: 'checkbox',
@@ -80,14 +80,14 @@ export const basicComponents = [
       showLabel: false,
       options: [
         {
-          value: 'Option 1'
+          value: 'Option 1',
         },
         {
-          value: 'Option 2'
+          value: 'Option 2',
         },
         {
-          value: 'Option 3'
-        }
+          value: 'Option 3',
+        },
       ],
       required: false,
       width: '',
@@ -95,11 +95,11 @@ export const basicComponents = [
       remoteOptions: [],
       props: {
         value: 'value',
-        label: 'label'
+        label: 'label',
       },
       remoteFunc: '',
       disabled: false,
-    }
+    },
   },
   {
     type: 'time',
@@ -118,7 +118,7 @@ export const basicComponents = [
       format: 'HH:mm:ss',
       required: false,
       width: '',
-    }
+    },
   },
   {
     type: 'date',
@@ -137,7 +137,7 @@ export const basicComponents = [
       timestamp: false,
       required: false,
       width: '',
-    }
+    },
   },
   {
     type: 'rate',
@@ -147,8 +147,8 @@ export const basicComponents = [
       max: 5,
       disabled: false,
       allowHalf: false,
-      required: false
-    }
+      required: false,
+    },
   },
   {
     type: 'color',
@@ -157,8 +157,8 @@ export const basicComponents = [
       defaultValue: '',
       disabled: false,
       showAlpha: false,
-      required: false
-    }
+      required: false,
+    },
   },
   {
     type: 'select',
@@ -174,23 +174,24 @@ export const basicComponents = [
       width: '',
       options: [
         {
-          value: 'Option 1'
+          value: 'Option 1',
         },
         {
-          value: 'Option 2'
-        },{
-          value: 'Option 3'
-        }
+          value: 'Option 2',
+        },
+        {
+          value: 'Option 3',
+        },
       ],
       remote: false,
       filterable: false,
       remoteOptions: [],
       props: {
         value: 'value',
-        label: 'label'
+        label: 'label',
       },
-      remoteFunc: ''
-    }
+      remoteFunc: '',
+    },
   },
   {
     type: 'switch',
@@ -199,7 +200,7 @@ export const basicComponents = [
       defaultValue: false,
       required: false,
       disabled: false,
-    }
+    },
   },
   {
     type: 'slider',
@@ -213,8 +214,8 @@ export const basicComponents = [
       step: 1,
       showInput: false,
       range: false,
-      width: ''
-    }
+      width: '',
+    },
   },
   {
     type: 'text',
@@ -222,17 +223,17 @@ export const basicComponents = [
     options: {
       defaultValue: 'This is a text',
       customClass: '',
-    }
-  }
-]
+    },
+  },
+];
 
 export const advanceComponents = [
   {
     type: 'blank',
     icon: 'icon-zidingyishuju',
     options: {
-      defaultType: 'String'
-    }
+      defaultType: 'String',
+    },
   },
   {
     type: 'imgupload',
@@ -254,16 +255,16 @@ export const advanceComponents = [
       isDelete: false,
       min: 0,
       isEdit: false,
-      action: 'https://jsonplaceholder.typicode.com/photos/'
-    }
+      action: 'https://jsonplaceholder.typicode.com/photos/',
+    },
   },
   {
     type: 'editor',
     icon: 'icon-fuwenbenkuang',
     options: {
       defaultValue: '',
-      width: ''
-    }
+      width: '',
+    },
   },
   {
     type: 'cascader',
@@ -279,12 +280,49 @@ export const advanceComponents = [
       props: {
         value: 'value',
         label: 'label',
-        children: 'children'
+        children: 'children',
       },
-      remoteFunc: ''
-    }
-  }
-]
+      remoteFunc: '',
+    },
+  },
+  {
+    type: 'table',
+    icon: 'icon-table',
+    options: {
+      stripe: true,
+      border: false,
+      height: '400',
+      columns: [
+        {
+          field: 'date',
+          label: '日期',
+          width: '180',
+        },
+        {
+          field: 'name',
+          label: '姓名',
+          width: '180',
+        },
+        {
+          field: 'address',
+          label: '地址',
+        },
+      ],
+      defaultValue: [
+        {
+          date: '2016-05-02',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄',
+        },
+        {
+          date: '2016-05-04',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1517 弄',
+        },
+      ],
+    },
+  },
+];
 
 export const layoutComponents = [
   {
@@ -293,17 +331,17 @@ export const layoutComponents = [
     columns: [
       {
         span: 12,
-        list: []
+        list: [],
       },
       {
         span: 12,
-        list: []
-      }
+        list: [],
+      },
     ],
     options: {
       gutter: 0,
       justify: 'start',
-      align: 'top'
-    }
-  }
-]
+      align: 'top',
+    },
+  },
+];

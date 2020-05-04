@@ -1,0 +1,164 @@
+{
+  "list": [
+    {
+      "type": "grid",
+      "icon": "icon-grid-",
+      "columns": [
+        {
+          "span": 12,
+          "list": [
+            {
+              "type": "input",
+              "icon": "icon-input",
+              "options": {
+                "width": "100%",
+                "defaultValue": "",
+                "required": false,
+                "dataType": "string",
+                "pattern": "",
+                "placeholder": "",
+                "disabled": false,
+                "remoteFunc": "func_db37214b7"
+              },
+              "name": "单行文本",
+              "key": "db37214b7",
+              "model": "input_db37214b7",
+              "rules": [
+                {
+                  "type": "string",
+                  "message": "单行文本格式不正确"
+                }
+              ]
+            },
+            {
+              "type": "input",
+              "icon": "icon-input",
+              "options": {
+                "width": "100%",
+                "defaultValue": "",
+                "required": false,
+                "dataType": "string",
+                "pattern": "",
+                "placeholder": "",
+                "disabled": false,
+                "remoteFunc": "func_ec2750b2e"
+              },
+              "name": "单行文本",
+              "key": "ec2750b2e",
+              "model": "input_ec2750b2e",
+              "rules": [
+                {
+                  "type": "string",
+                  "message": "单行文本格式不正确"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "span": 12,
+          "list": [
+            {
+              "type": "input",
+              "icon": "icon-input",
+              "options": {
+                "width": "100%",
+                "defaultValue": "",
+                "required": false,
+                "dataType": "string",
+                "pattern": "",
+                "placeholder": "",
+                "disabled": false,
+                "remoteFunc": "func_baca6f45c"
+              },
+              "name": "单行文本",
+              "key": "baca6f45c",
+              "model": "input_baca6f45c",
+              "rules": []
+            },
+            {
+              "type": "input",
+              "icon": "icon-input",
+              "options": {
+                "width": "100%",
+                "defaultValue": "",
+                "required": false,
+                "dataType": "string",
+                "pattern": "",
+                "placeholder": "",
+                "disabled": false,
+                "remoteFunc": "func_08cef6efb"
+              },
+              "name": "单行文本",
+              "key": "08cef6efb",
+              "model": "input_08cef6efb",
+              "rules": [
+                {
+                  "type": "string",
+                  "message": "单行文本格式不正确"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "options": {
+        "gutter": 0,
+        "justify": "start",
+        "align": "top",
+        "remoteFunc": "func_f653c23b8"
+      },
+      "name": "栅格布局",
+      "key": "f653c23b8",
+      "model": "grid_f653c23b8",
+      "rules": []
+    },
+    {
+      "type": "table",
+      "icon": "icon-table",
+      "options": {
+        "stripe": true,
+        "border": false,
+        "height": "400",
+        "columns": [
+          {
+            "field": "date",
+            "label": "日期",
+            "width": "180"
+          },
+          {
+            "field": "name",
+            "label": "姓名",
+            "width": "180"
+          },
+          {
+            "field": "address",
+            "label": "地址"
+          }
+        ],
+        "defaultValue": [
+          {
+            "date": "2016-05-02",
+            "name": "王小虎",
+            "address": "上海市普陀区金沙江路 1518 弄"
+          },
+          {
+            "date": "2016-05-04",
+            "name": "王小虎",
+            "address": "上海市普陀区金沙江路 1517 弄"
+          }
+        ],
+        "remoteFunc": "func_0c9ef2d30"
+      },
+      "name": "表格",
+      "key": "0c9ef2d30",
+      "model": "table_0c9ef2d30",
+      "rules": []
+    }
+  ],
+  "config": {
+    "labelWidth": 100,
+    "labelPosition": "top",
+    "size": "small"
+  }
+}

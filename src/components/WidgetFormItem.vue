@@ -185,6 +185,23 @@
     <template v-if="element.type == 'text'">
       <span>{{element.options.defaultValue}}</span>
     </template>
+    <template v-if="element.type === 'table'">
+      <el-table
+        :data="element.options.defaultValue"
+        :height="element.options.height"
+        :border="element.options.border"
+        :stripe="element.options.stripe"
+        style="width: 100%"
+      >
+        <el-table-column
+          v-for="column in element.options.columns"
+          :key="column.field"
+          :prop="column.field"
+          :label="column.label"
+          :width="column.width"
+        ></el-table-column>
+      </el-table>
+    </template>
 
     <div class="widget-view-action" v-if="selectWidget.key == element.key">
       <i class="iconfont icon-icon_clone" @click.stop="handleWidgetClone(index)"></i>

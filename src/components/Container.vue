@@ -39,8 +39,8 @@
                 @start="handleMoveStart"
                 :move="handleMove"
               >
+                <!-- v-if="advanceFields.indexOf(item.type) >= 0" -->
                 <li
-                  v-if="advanceFields.indexOf(item.type) >= 0"
                   class="form-edit-widget-label"
                   :class="{'no-put': item.type == 'table'}"
                   v-for="(item, index) in advanceComponents"

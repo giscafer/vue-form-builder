@@ -22,7 +22,7 @@ Vue.use(VueRunSfc, {
   jsLabs: ['https://cdn.jsdelivr.net/npm/element-ui@2.9.1/lib/index.js'],
   row: true,
   reverse: true,
-  height: '400px',
+  height: '600px',
   open: true,
   isHideHeader: false,
 });

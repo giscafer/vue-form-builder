@@ -1,5 +1,5 @@
 <template>
-  <vue-run-sfc title="实时预览" :open="false" :code="code"></vue-run-sfc>
+  <vue-run-sfc title="实时预览" :code="code"></vue-run-sfc>
 </template>
 
 <script>

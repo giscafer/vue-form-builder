@@ -1,0 +1,149 @@
+{
+  "list": [
+    {
+      "type": "grid",
+      "icon": "icon-grid-",
+      "columns": [
+        {
+          "span": 12,
+          "list": [
+            {
+              "type": "input",
+              "icon": "icon-input",
+              "options": {
+                "width": "100%",
+                "defaultValue": "",
+                "required": false,
+                "dataType": "string",
+                "pattern": "",
+                "placeholder": "",
+                "disabled": false,
+                "remoteFunc": "func_3d318ac17"
+              },
+              "name": "单行文本",
+              "key": "3d318ac17",
+              "model": "input_3d318ac17",
+              "rules": [{ "type": "string", "message": "单行文本格式不正确" }]
+            },
+            {
+              "type": "input",
+              "icon": "icon-input",
+              "options": {
+                "width": "100%",
+                "defaultValue": "",
+                "required": false,
+                "dataType": "string",
+                "pattern": "",
+                "placeholder": "",
+                "disabled": false,
+                "remoteFunc": "func_7c1e34a93"
+              },
+              "name": "单行文本",
+              "key": "7c1e34a93",
+              "model": "input_7c1e34a93",
+              "rules": [{ "type": "string", "message": "单行文本格式不正确" }]
+            },
+            {
+              "type": "date",
+              "icon": "icon-date",
+              "options": {
+                "defaultValue": "",
+                "readonly": false,
+                "disabled": false,
+                "editable": true,
+                "clearable": true,
+                "placeholder": "",
+                "startPlaceholder": "",
+                "endPlaceholder": "",
+                "type": "date",
+                "format": "yyyy-MM-dd",
+                "timestamp": false,
+                "required": false,
+                "width": "100%",
+                "remoteFunc": "func_d57a3669e"
+              },
+              "name": "日期选择器",
+              "key": "d57a3669e",
+              "model": "date_d57a3669e",
+              "rules": []
+            }
+          ]
+        },
+        {
+          "span": 12,
+          "list": [
+            {
+              "type": "input",
+              "icon": "icon-input",
+              "options": {
+                "width": "100%",
+                "defaultValue": "",
+                "required": false,
+                "dataType": "string",
+                "pattern": "",
+                "placeholder": "",
+                "disabled": false,
+                "remoteFunc": "func_6cd79d4d1"
+              },
+              "name": "单行文本",
+              "key": "6cd79d4d1",
+              "model": "input_6cd79d4d1",
+              "rules": []
+            },
+            {
+              "type": "input",
+              "icon": "icon-input",
+              "options": {
+                "width": "100%",
+                "defaultValue": "",
+                "required": false,
+                "dataType": "string",
+                "pattern": "",
+                "placeholder": "",
+                "disabled": false,
+                "remoteFunc": "func_7bdaede38"
+              },
+              "name": "单行文本",
+              "key": "7bdaede38",
+              "model": "input_7bdaede38",
+              "rules": [{ "type": "string", "message": "单行文本格式不正确" }]
+            }
+          ]
+        }
+      ],
+      "options": {
+        "gutter": 0,
+        "justify": "start",
+        "align": "top",
+        "remoteFunc": "func_de06240fd"
+      },
+      "name": "栅格布局",
+      "key": "de06240fd",
+      "model": "grid_de06240fd",
+      "rules": []
+    },
+    {
+      "type": "textarea",
+      "icon": "icon-diy-com-textarea",
+      "options": {
+        "width": "100%",
+        "defaultValue": "",
+        "required": false,
+        "disabled": false,
+        "pattern": "",
+        "placeholder": "",
+        "remoteFunc": "func_b37e444ac"
+      },
+      "name": "多行文本",
+      "key": "b37e444ac",
+      "model": "textarea_b37e444ac",
+      "rules": []
+    }
+  ],
+  "config": {
+    "labelWidth": 100,
+    "labelPosition": "right",
+    "size": "small",
+    "customClass": ""
+  }
+}

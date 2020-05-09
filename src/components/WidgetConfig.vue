@@ -438,32 +438,12 @@
           >{{$t('fm.config.widget.isEdit')}}</el-checkbox>
         </el-form-item>
         <el-form-item :label="$t('fm.config.widget.validate')">
-          <div v-if="Object.keys(data.options).indexOf('required')>=0">
-            <el-checkbox v-model="data.options.required">{{$t('fm.config.widget.required')}}</el-checkbox>
-          </div>
-          <el-select
-            v-if="Object.keys(data.options).indexOf('dataType')>=0"
-            v-model="data.options.dataType"
-            size="mini"
-          >
-            <el-option value="string" :label="$t('fm.config.widget.string')"></el-option>
-            <el-option value="number" :label="$t('fm.config.widget.number')"></el-option>
-            <el-option value="boolean" :label="$t('fm.config.widget.boolean')"></el-option>
-            <el-option value="integer" :label="$t('fm.config.widget.integer')"></el-option>
-            <el-option value="float" :label="$t('fm.config.widget.float')"></el-option>
-            <el-option value="url" :label="$t('fm.config.widget.url')"></el-option>
-            <el-option value="email" :label="$t('fm.config.widget.email')"></el-option>
-            <el-option value="hex" :label="$t('fm.config.widget.hex')"></el-option>
-          </el-select>
-
-          <div v-if="Object.keys(data.options).indexOf('pattern')>=0">
-            <el-input
-              size="mini"
-              v-model.lazy="data.options.pattern"
-              style=" width: 240px;"
-              :placeholder="$t('fm.config.widget.patternPlaceholder')"
-            ></el-input>
-          </div>
+          <validate-rule
+            :data="data"
+            @validateRequired="validateRequired"
+            @validateDataType="validateDataType"
+            @valiatePattern="valiatePattern"
+          ></validate-rule>
         </el-form-item>
       </template>
     </el-form>
@@ -472,10 +452,12 @@
 
 <script>
 import Draggable from "vuedraggable";
+import ValidateRule from "./ValidateRule";
 
 export default {
   components: {
-    Draggable
+    Draggable,
+    ValidateRule
   },
   props: ["data"],
   data() {
@@ -547,13 +529,15 @@ export default {
       }
     },
 
-    validateRequired(val) {
+    validateRequired(val, errMsg) {
       if (val) {
         this.validator.required = {
           required: true,
-          message: `${this.data.name}${this.$t(
-            "fm.config.widget.validatorRequired"
-          )}`
+          message: errMsg
+            ? errMsg
+            : `${this.data.name}${this.$t(
+                "fm.config.widget.validatorRequired"
+              )}`
         };
       } else {
         this.validator.required = null;
@@ -564,7 +548,7 @@ export default {
       });
     },
 
-    validateDataType(val) {
+    validateDataType(val, errMsg) {
       if (!this.show) {
         return false;
       }
@@ -572,7 +556,9 @@ export default {
       if (val) {
         this.validator.type = {
           type: val,
-          message: this.data.name + this.$t("fm.config.widget.validatorType")
+          message: errMsg
+            ? errMsg
+            : this.data.name + this.$t("fm.config.widget.validatorType")
         };
       } else {
         this.validator.type = null;
@@ -580,7 +566,7 @@ export default {
 
       this.generateRule();
     },
-    valiatePattern(val) {
+    valiatePattern(val, errMsg) {
       if (!this.show) {
         return false;
       }
@@ -588,7 +574,9 @@ export default {
       if (val) {
         this.validator.pattern = {
           pattern: val,
-          message: this.data.name + this.$t("fm.config.widget.validatorPattern")
+          message: errMsg
+            ? errMsg
+            : this.$t("fm.config.widget.validatorPattern")
         };
       } else {
         this.validator.pattern = null;
@@ -607,15 +595,6 @@ export default {
             this.data.options.defaultValue = "";
         }
       }
-    },
-    "data.options.required": function(val) {
-      this.validateRequired(val);
-    },
-    "data.options.dataType": function(val) {
-      this.validateDataType(val);
-    },
-    "data.options.pattern": function(val) {
-      this.valiatePattern(val);
     },
     "data.name": function(val) {
       if (this.data.options) {

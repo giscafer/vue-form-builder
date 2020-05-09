@@ -433,7 +433,7 @@ export default {
         const editor = ace.edit("jsoneditor");
         editor.session.setMode("ace/mode/json");
         
-        this.jsonCopyValue = decodeURIComponent(JSON.stringify(encodeURIComponent(this.widgetForm)));
+        this.jsonCopyValue = JSON.stringify(this.widgetForm);
       });
     },
     copyJsonDataHandler() {

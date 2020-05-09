@@ -1,15 +1,15 @@
-import { DATA_MODEL } from './constant';
+import { DATA_MODEL, FORM_MODEL } from './constant';
 
 export function genFormItemTemp(widget) {
   let template = `
         <el-form-item label="${widget.name}" prop="${widget.model}">
-          ${genWidgetTemp(widget)}
+          ${genWidgetTemp(widget, true)}
         </el-form-item>
     `;
   return template;
 }
 
-function genWidgetTemp(widget) {
+function genWidgetTemp(widget, isForm = false) {
   let widgetTemp = '';
   let {
     arrowControl,
@@ -30,7 +30,7 @@ function genWidgetTemp(widget) {
     type,
     width,
   } = widget.options;
-  const model = `${DATA_MODEL}.${widget.model}`;
+  const model = `${isForm ? FORM_MODEL : DATA_MODEL}.${widget.model}`;
   if (!placeholder) {
     placeholder = '请输入';
   }

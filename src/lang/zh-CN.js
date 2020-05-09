@@ -124,6 +124,7 @@ export default {
         tip: '提示说明文字',
         action: '上传地址',
         defaultType: '绑定数据类型',
+        none: '无',
         string: '字符串',
         object: '对象',
         array: '数组',
@@ -178,6 +179,9 @@ export default {
         validatorRequired: '必须填写',
         validatorType: '格式不正确',
         validatorPattern: '格式不匹配',
+        normalValidatorName: '常规校验',
+        patternValidatorName: '自定义正则',
+        errorExplain: '自定义错误说明',
       },
     },
     upload: {

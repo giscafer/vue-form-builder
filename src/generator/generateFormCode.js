@@ -4,8 +4,8 @@
  * @description: 动态生成表单源码
  */
 
-import { DATA_MODEL } from './constant';
-import { genFormItemTemp } from './generateFormItemCode';
+import { DATA_MODEL, FORM_MODEL } from "./constant";
+import { genFormItemTemp } from "./generateFormItemCode";
 
 let models;
 let rules;
@@ -26,14 +26,14 @@ export default function genFormCode(data, value) {
         ref="generateForm"
         label-suffix=":"
         size="${data.config.size}"
-        :model="models"
+        :model="${FORM_MODEL}"
         :rules="rules"
         label-position="${data.config.labelPosition}"
-        label-width="${data.config.labelWidth + 'px'} "
+        label-width="${data.config.labelWidth + "px"} "
       >`;
 
   for (let widget of data.list) {
-    if (widget.type === 'grid') {
+    if (widget.type === "grid") {
       const item = widget;
       templateCode += `<el-row
       key="${item.key}"
@@ -46,7 +46,7 @@ export default function genFormCode(data, value) {
         templateCode += ` <el-col key="${colIndex}" :span="${col.span}">
         ${col.list.reduce(
           (template, citem) => template + genFormItemTemp(citem),
-          ''
+          ""
         )}
     </el-col>`;
       });
@@ -66,8 +66,8 @@ export default function genFormCode(data, value) {
       name:'form-builder',
         data() {
           return {
-            models: ${JSON.stringify(models)},
-            rules: ${JSON.stringify(rules)},
+            ${FORM_MODEL}: ${JSON.stringify(models)},
+            rules: ${strToRegExp(JSON.stringify(rules))},
             ${DATA_MODEL}: ${JSON.stringify(dataModel)},
           };
         },
@@ -77,15 +77,36 @@ export default function genFormCode(data, value) {
         methods: {}
     }
     </script>`;
-  const styleCode = '';
-  const result = templateCode + '\r\n' + scriptCode + '\r\n' + styleCode;
+  const styleCode = "";
+  const result = templateCode + "\r\n" + scriptCode + "\r\n" + styleCode;
   console.log(result);
+  return result;
+}
+
+/**
+ * 解决JSON.stringify 对字符串转义、不支持转换正则的问题
+ * @param {*} str
+ */
+function strToRegExp(str) {
+  const reg1 = /("pattern":)(.*?)((",)|(" ,))/g;
+  const reg2 = /"([^"]*)"/g; // 替换双引号
+  let result = str,
+    regArr1,
+    regArr2;
+  regArr1 = str.match(reg1);
+  if (!regArr1) return result;
+  regArr2 = regArr1.map((b) => decodeURI(b.replace(reg2, "$1")));
+  regArr1.map((b, index) => {
+    if (str.indexOf(b) !== -1) {
+      result = result.replace(b, regArr2[index]);
+    }
+  });
   return result;
 }
 
 function generateModel(genList, value) {
   for (let i = 0; i < genList.length; i++) {
-    if (genList[i].type === 'grid') {
+    if (genList[i].type === "grid") {
       genList[i].columns.forEach((item) => {
         generateModel(item.list);
       });
@@ -93,13 +114,13 @@ function generateModel(genList, value) {
       if (value && Object.keys(value).indexOf(genList[i].model) >= 0) {
         models[genList[i].model] = value[genList[i].model];
       } else {
-        if (genList[i].type === 'blank') {
+        if (genList[i].type === "blank") {
           $set(
             models,
             genList[i].model,
-            genList[i].options.defaultType === 'String'
-              ? ''
-              : genList[i].options.defaultType === 'Object'
+            genList[i].options.defaultType === "String"
+              ? ""
+              : genList[i].options.defaultType === "Object"
               ? {}
               : []
           );
@@ -115,7 +136,7 @@ function generateModel(genList, value) {
           ...rules[genList[i].model],
           ...genList[i].rules.map((item) => {
             if (item.pattern) {
-              return { ...item, pattern: eval(item.pattern) };
+              return { ...item, pattern: encodeURI(item.pattern) };
             } else {
               return { ...item };
             }
@@ -125,7 +146,7 @@ function generateModel(genList, value) {
         rules[genList[i].model] = [
           ...genList[i].rules.map((item) => {
             if (item.pattern) {
-              return { ...item, pattern: eval(item.pattern) };
+              return { ...item, pattern: encodeURI(item.pattern) };
             } else {
               return { ...item };
             }

@@ -402,6 +402,12 @@ export default {
       return true;
     },
     handlePreview() {
+      // 没控制必须正则
+      try {
+        new RegExp(this.data.options.pattern);
+      } catch (e) {
+        console.log("无效正则");
+      }
       console.log(this.widgetForm);
       this.previewVisible = true;
     },
@@ -426,7 +432,7 @@ export default {
       this.$nextTick(() => {
         const editor = ace.edit("jsoneditor");
         editor.session.setMode("ace/mode/json");
-
+        
         this.jsonCopyValue = JSON.stringify(this.widgetForm);
       });
     },

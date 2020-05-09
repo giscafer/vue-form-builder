@@ -126,6 +126,7 @@ export default {
         tip: 'Text Prompt',
         action: 'Upload Address',
         defaultType: 'Data Type',
+        none: 'None',
         string: 'String',
         object: 'Object',
         array: 'Array',
@@ -180,6 +181,9 @@ export default {
         validatorRequired: 'Required',
         validatorType: 'Invaild format',
         validatorPattern: 'Unmatched pattern',
+        normalValidatorName: 'normal',
+        patternValidatorName: 'pattern',
+        errorExplain: 'custom explain',
       },
     },
     upload: {
